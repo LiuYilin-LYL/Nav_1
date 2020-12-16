@@ -1,0 +1,16 @@
+/* Header */
+.large-header {
+
+	height: 1080px;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	background: url(/demo-1-bg.f1236c58.jpg);
+	background-size: cover;
+	background-position: center center;
+	z-index: 1;
+}
+
+
+
+/*# sourceMappingURL=/component.74f66e29.css.map */
