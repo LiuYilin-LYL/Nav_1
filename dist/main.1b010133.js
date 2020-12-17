@@ -123,11 +123,25 @@ var $lastLi = $siteList.find('li.last');
 var x = localStorage.getItem('x');
 var xObject = JSON.parse(x);
 var hashMap = xObject || [{
-  logo: 'A',
-  url: 'https://www.acfun.cn'
+  logo: 'G',
+  url: 'https://www.google.com',
+  name: '谷歌'
 }, {
   logo: 'B',
-  url: 'https://www.bilibili.com'
+  url: 'https://www.bilibili.com',
+  name: 'b站'
+}, {
+  logo: 'F',
+  url: 'https://www.bing.com/translator?mkt=zh-CN',
+  name: '翻译'
+}, {
+  logo: 'M',
+  url: 'https://www.bing.com/maps/?setmkt=en-US&setlang=en-US',
+  name: '地图'
+}, {
+  logo: 'Q',
+  url: ' https://mail.qq.com/',
+  name: 'qq邮箱'
 }];
 
 var simplifyUrl = function simplifyUrl(url) {
@@ -137,7 +151,7 @@ var simplifyUrl = function simplifyUrl(url) {
 var render = function render() {
   $siteList.find('li:not(.last)').remove();
   hashMap.forEach(function (node, index) {
-    var $li = $("<li>\n      <div class=\"site\">\n        <div class=\"logo\">".concat(node.logo, "</div>\n        <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n        <div class=\"close\">\n          <svg class=\"icon\">\n            <use xlink:href=\"#icon-close\"></use>\n          </svg>\n        </div>\n      </div>\n    </li>")).insertBefore($lastLi);
+    var $li = $("<li>\n      <div class=\"site\">\n        <div class=\"logo\">".concat(node.logo, "</div>\n        <div class=\"link\">").concat(node.name, "</div>\n        <div class=\"close\">\n          <svg class=\"icon\">\n            <use xlink:href=\"#icon-close\"></use>\n          </svg>\n        </div>\n      </div>\n    </li>")).insertBefore($lastLi);
     $li.on('click', function () {
       window.open(node.url);
     });
@@ -153,6 +167,7 @@ var render = function render() {
 render();
 $('.addButton').on('click', function () {
   var url = window.prompt('请问你要添加的网址是啥？');
+  var name = window.prompt('请输入名称');
 
   if (url.indexOf('http') !== 0) {
     url = 'https://' + url;
@@ -161,7 +176,8 @@ $('.addButton').on('click', function () {
   console.log(url);
   hashMap.push({
     logo: simplifyUrl(url)[0].toUpperCase(),
-    url: url
+    url: url,
+    name: name
   });
   render();
 });
@@ -180,5 +196,49 @@ $(document).on('keypress', function (e) {
     }
   }
 });
+var box = document.querySelector('.search-box');
+var bt = document.querySelector('.bt');
+var w = window.innerWidth;
+
+if (w > 960) // 增加监听mouseover事件
+  {
+    bt.addEventListener('mouseover', function () {
+      // 增加active样式
+      bt.classList.add('active');
+    });
+    box.addEventListener('mouseover', function () {
+      // 增加active样式
+      box.classList.add('active');
+    }); // 解决点击搜索框会触发 body.click事件问题
+
+    box.addEventListener('click', function (e) {
+      // 防止事件冒泡
+      e.stopPropagation();
+    });
+    document.documentElement.addEventListener('click', function () {
+      // 移除active样式
+      box.classList.remove('active');
+      bt.classList.remove('active');
+    });
+  } else {
+  bt.addEventListener('touchstart', function () {
+    // 增加active样式
+    bt.classList.add('active');
+  });
+  box.addEventListener('mouseover', function () {
+    // 增加active样式
+    box.classList.add('active');
+  }); // 解决点击搜索框会触发 body.click事件问题
+
+  box.addEventListener('click', function (e) {
+    // 防止事件冒泡
+    e.stopPropagation();
+  });
+  document.documentElement.addEventListener('click', function () {
+    // 移除active样式
+    box.classList.remove('active');
+    bt.classList.remove('active');
+  });
+}
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.7dbf82eb.js.map
+//# sourceMappingURL=main.1b010133.js.map
