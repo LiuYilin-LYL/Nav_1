@@ -10,7 +10,7 @@ img{max-width:100% ;max-height: 100%;}
 body{ 
 
     width: 100%;
-    background: url(./img/demo-1-bg.jpg) no-repeat center center;
+    background: url(/demo-1-bg.27e0a4fd.jpg) no-repeat center center;
     z-index: -1;
     background-attachment:fixed;
     background-size: cover;
@@ -264,3 +264,6 @@ font-size: 16px;
     align-items: center;
   }
  
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */

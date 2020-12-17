@@ -3,9 +3,15 @@ const $lastLi = $siteList.find('li.last')
 const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
 const hashMap = xObject || [
-    { logo: 'A', url: 'https://www.acfun.cn' },
-    { logo: 'B', url: 'https://www.bilibili.com' }
+    { logo: 'G', url: 'https://www.google.com', name: '谷歌' },
+    { logo: 'B', url: 'https://www.bilibili.com', name: 'b站' },
+    { logo: 'F', url: 'https://www.bing.com/translator?mkt=zh-CN', name: '翻译' },
+    { logo: 'M', url: 'https://www.bing.com/maps/?setmkt=en-US&setlang=en-US', name: '地图' },
+    { logo: 'Q', url: ' https://mail.qq.com/', name: 'qq邮箱' },
+
 ]
+
+
 const simplifyUrl = (url) => {
     return url.replace('https://', '')
         .replace('http://', '')
@@ -19,7 +25,7 @@ const render = () => {
         const $li = $(`<li>
       <div class="site">
         <div class="logo">${node.logo}</div>
-        <div class="link">${simplifyUrl(node.url)}</div>
+        <div class="link">${node.name}</div>
         <div class="close">
           <svg class="icon">
             <use xlink:href="#icon-close"></use>
@@ -42,13 +48,15 @@ render()
 
 $('.addButton').on('click', () => {
     let url = window.prompt('请问你要添加的网址是啥？')
+    let name = window.prompt('请输入名称')
     if (url.indexOf('http') !== 0) {
         url = 'https://' + url
     }
     console.log(url)
     hashMap.push({
         logo: simplifyUrl(url)[0].toUpperCase(),
-        url: url
+        url: url,
+        name: name,
     })
     render()
 })
@@ -66,3 +74,55 @@ $(document).on('keypress', (e) => {
         }
     }
 })
+let box = document.querySelector('.search-box');
+let bt = document.querySelector('.bt');
+
+let w = window.innerWidth
+if (w > 960)
+// 增加监听mouseover事件
+{
+    bt.addEventListener('mouseover', () => {
+        // 增加active样式
+        bt.classList.add('active');
+    });
+
+    box.addEventListener('mouseover', () => {
+        // 增加active样式
+        box.classList.add('active');
+    });
+
+    // 解决点击搜索框会触发 body.click事件问题
+    box.addEventListener('click', (e) => {
+        // 防止事件冒泡
+        e.stopPropagation();
+    });
+    document.documentElement.addEventListener('click', () => {
+        // 移除active样式
+        box.classList.remove('active');
+        bt.classList.remove('active');
+    })
+
+} else {
+    bt.addEventListener('touchstart', () => {
+        // 增加active样式
+
+        bt.classList.add('active');
+    });
+
+    box.addEventListener('mouseover', () => {
+        // 增加active样式
+        box.classList.add('active');
+    });
+
+    // 解决点击搜索框会触发 body.click事件问题
+    box.addEventListener('click', (e) => {
+        // 防止事件冒泡
+        e.stopPropagation();
+    });
+    document.documentElement.addEventListener('click', () => {
+        // 移除active样式
+        box.classList.remove('active');
+        bt.classList.remove('active');
+    })
+
+}

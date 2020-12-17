@@ -12,44 +12,26 @@
             fill: currentColor;
             overflow: hidden;
         }</style>
-    <style>.list {
-            width: 200px;
-            height: 250px;
-            overflow: hidden;
-            transform: rotate(120deg);
-            margin: 200px;
-        }
+    <link rel="stylesheet" href="/style.e308ff8e.css">
 
-        .list_child {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            transform: rotate(-60deg);
-        }
-
-        .list_child_child {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            transform: rotate(-60deg);
-            background-color: red;
-        }</style>
-
-
-
-
-
-    <link rel="stylesheet" href="style.eb80c23d.css">
-
-</head>
+<script src="/style.e308ff8e.js"></script></head>
 
 <body>
-    <header class="globalHeader">
-        <form class="searchForm" method="get" action="https://www.baidu.com/s">
-            <input name="wd" type="text">
-            <button type="submit">搜索</button>
+
+    <!-- 搜索框最外边框，动画变化的边框，从圆形变成长条形圆角 -->
+    <div class="search-box">
+        <!-- 左侧搜索框 -->
+        <form class="key" method="get" action="https://www.baidu.com/s">
+            <input type="text" placeholder="请输入搜索关键词..." method="get" action="https://www.baidu.com/s">
         </form>
-    </header>
+        <!-- 右侧搜索按钮 -->
+        <div class="bt">
+            <a href="" type="submit">
+                <i class="iconfont icon-sousuo"></i>
+            </a>
+        </div>
+    </div>
+    <script>// 搜索框box元素</script>
     <main class="globalMain">
 
         <ul class="siteList">
@@ -60,15 +42,16 @@
                             <use xlink:href="#icon-add"></use>
                         </svg>
                     </div>
-                    <div class="text">新增网站</div>
+
                 </div>
 
             </li>
         </ul>
     </main>
+
     <script src="//at.alicdn.com/t/font_1473630_8pfq4zss4o8.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="main.7dbf82eb.js"></script>
+    <script src="/main.1f19ae8e.js"></script>
 
 </body>
 
